@@ -1,5 +1,4 @@
-import { getAuditLogs } from "../../services/auditLogs.js";
-import { apiRequest } from "../../services/api.js";
+import { getAuditLogs, exportAuditLogs } from "../../services/auditLogs.js";
 
 export default function AuditLogs() {
   const container = document.createElement("div");
@@ -15,13 +14,13 @@ export default function AuditLogs() {
           <select id="eventType" class="form-select form-select-sm">
             <option value="">All Events</option>
             <option value="LOGIN">LOGIN</option>
-            <option value="USER_CREATED">USER CREATED</option>
-            <option value="ROLE_ASSIGNED">ROLE ASSIGNED</option>
+            <option value="USER_CREATED">USER_CREATED</option>
+            <option value="ROLE_ASSIGNED">ROLE_ASSIGNED</option>
           </select>
 
           <input id="module" class="form-control form-control-sm" placeholder="Module">
 
-          <button id="exportBtn" class="btn btn-sm btn-success">
+          <button id="exportBtn" class="btn btn-sm btn-success col-3">
             Export CSV
           </button>
 
@@ -49,26 +48,49 @@ export default function AuditLogs() {
           </tbody>
         </table>
 
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <button id="prevBtn" class="btn btn-sm btn-secondary">
+            Prev
+          </button>
+
+          <span id="pageInfo"></span>
+
+          <button id="nextBtn" class="btn btn-sm btn-secondary">
+            Next
+          </button>
+        </div>
+
       </div>
     </div>
   `;
 
-  let page = 1;
-
   const rows = container.querySelector("#rows");
   const eventType = container.querySelector("#eventType");
   const module = container.querySelector("#module");
+
+  const prevBtn = container.querySelector("#prevBtn");
+  const nextBtn = container.querySelector("#nextBtn");
+  const pageInfo = container.querySelector("#pageInfo");
+  const exportBtn = container.querySelector("#exportBtn");
+
+  let page = 1;
+  let totalPages = 1;
 
   async function load() {
     rows.innerHTML = `<tr><td colspan="6">Loading...</td></tr>`;
 
     const res = await getAuditLogs({
       page,
+      per_page: 10,
       event_type: eventType.value,
       module: module.value
     });
 
     const data = res?.data?.data || [];
+    const pagination = res?.data?.pagination || {};
+
+    totalPages = pagination.total_pages || 1;
 
     rows.innerHTML = data.length
       ? data.map(log => `
@@ -82,36 +104,69 @@ export default function AuditLogs() {
           </tr>
         `).join("")
       : `<tr><td colspan="6">No audit logs found</td></tr>`;
+
+    pageInfo.textContent = `Page ${page} of ${totalPages}`;
+
+    prevBtn.disabled = page <= 1;
+    nextBtn.disabled = page >= totalPages;
   }
 
-  // =========================
-  // FIXED EXPORT FUNCTION
-  // =========================
-  container.querySelector("#exportBtn").onclick = async () => {
+  // -------------------------
+  // Pagination actions
+  // -------------------------
 
-    const query = new URLSearchParams({
+  prevBtn.onclick = () => {
+    if (page > 1) {
+      page--;
+      load();
+    }
+  };
+
+  nextBtn.onclick = () => {
+    if (page < totalPages) {
+      page++;
+      load();
+    }
+  };
+
+  // -------------------------
+  // Filters reset pagination
+  // -------------------------
+
+  eventType.onchange = () => {
+    page = 1;
+    load();
+  };
+
+  module.oninput = () => {
+    page = 1;
+    load();
+  };
+
+  // -------------------------
+  // Export CSV
+  // -------------------------
+
+  exportBtn.onclick = async () => {
+    const url = exportAuditLogs({
       event_type: eventType.value,
       module: module.value
-    }).toString();
+    });
 
-    const blob = await apiRequest(
-      `/audit-logs/export?${query}`,
-      {
-        method: "GET",
-        responseType: "blob" // IMPORTANT
-      }
-    );
+    const response = await fetch(url);
 
-    const url = window.URL.createObjectURL(blob);
+    const blob = await response.blob();
+
+    const downloadUrl = window.URL.createObjectURL(blob);
 
     const a = document.createElement("a");
-    a.href = url;
+    a.href = downloadUrl;
     a.download = "audit_logs.csv";
     document.body.appendChild(a);
     a.click();
     a.remove();
 
-    window.URL.revokeObjectURL(url);
+    window.URL.revokeObjectURL(downloadUrl);
   };
 
   load();
