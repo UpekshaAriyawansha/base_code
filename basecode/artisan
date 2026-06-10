@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/bootstrap/app.php';
+
+use Src\Console\Application;
+
+$app =
+    new Application();
+
+$app->run($argv);

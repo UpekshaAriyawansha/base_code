@@ -1,0 +1,278 @@
+/* =========================
+   BASE
+========================= */
+
+body {
+  background: #efefef;
+  transition: background .3s, color .3s;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+    background: #efefef;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: 250px;
+  background: #173b63;
+  color: white;
+  transition: width .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Header */
+.sidebar-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-toggle {
+  border: none;
+  background: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* Navigation label */
+.navigation-label {
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9fb3c8;
+}
+
+/* Menu */
+.menu-group {
+  margin-top: 10px;
+}
+
+.menu-title {
+  padding: 10px 20px 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9fb3c8;
+  text-transform: uppercase;
+}
+
+.sidebar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 3px 10px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  transition: background .2s;
+}
+
+.sidebar-link:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.sidebar-link.active {
+  background: rgba(255,255,255,0.18);
+}
+
+.sidebar-link i {
+  font-size: 16px;
+  min-width: 20px;
+}
+
+/* collapsed sidebar behavior */
+.sidebar.collapsed .menu-title,
+.sidebar.collapsed .navigation-label,
+.sidebar.collapsed .logo h5,
+.sidebar.collapsed .sidebar-link span {
+  display: none;
+}
+
+/* center icons when collapsed */
+.sidebar.collapsed .sidebar-link {
+  justify-content: center;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.top-navbar {
+  background: #173b63;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  padding: 25px;
+}
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb-wrapper {
+  /* background: white; */
+  border-bottom: 1px solid #eee;
+  padding: 12px 25px;
+}
+
+/* =========================
+   CARDS (DASHBOARD)
+========================= */
+
+.card {
+  border-radius: 10px;
+  border: none;
+}
+
+.dashboard-card {
+  background: rgb(213, 213, 213);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark-mode {
+  background: #111827;
+  color: #fff;
+}
+
+.dark-mode .top-navbar,
+.dark-mode .breadcrumb-wrapper,
+.dark-mode .card,
+.dark-mode .dashboard-card {
+  background: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+
+.dark-mode .sidebar {
+  background: #0f172a;
+    color: white;
+}
+
+/* links in dark mode */
+.dark-mode .sidebar-link {
+  color: #e5e7eb;
+    color: white;
+}
+
+.dark-mode .sidebar-link:hover {
+  background: rgba(255,255,255,0.08);
+    color: white;
+
+}
+
+/* =========================
+   BUTTONS OVERRIDE (optional polish)
+========================= */
+
+button {
+  transition: all .2s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+
+
+
+
+.custom-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  color: white;
+  background: #198754;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.custom-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.custom-toast.error {
+  background: #dc3545;
+}
+
+
+.config-card {
+  border: 1px solid #d9dee7;
+  border-radius: 12px;
+  padding: 20px;
+  background: #fff;
+  height: 100%;
+}
+
+.config-card p {
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.config-card .btn {
+  background: #173f6d;
+  border-color: #173f6d;
+}
+
+.config-card .badge {
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 11px;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+
+.btn-filter {
+  background: #173f6d;
+  border-color: #173f6d;
+}
