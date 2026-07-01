@@ -3,14 +3,14 @@ export default function Filter() {
   const container = document.createElement("div");
 
   container.innerHTML = `
-    <div class="container mt-4 page-content">
+    <div class="container mt-4 page-content profile-card">
 
-      <div class="row card">
+      <div class="row card profile-card">
 
-        <div class="card shadow-sm mb-2">
+        <div class="card shadow-sm mb-2 ">
 
           <!-- HEADER -->
-          <div class="card-header d-flex justify-content-between align-items-center">
+          <div class="card-header d-flex justify-content-between align-items-center ">
             <strong>Filters</strong>
 
             <button class="btn btn-sm btn-outline-secondary" id="toggleFilters">

@@ -50,7 +50,7 @@ export default async function EditUser() {
   console.log("User Role ID:", user.role_id);
 
   container.innerHTML = `
-    <div class="container-fluid card py-4">
+    <div class="container-fluid card py-4 profile-card pt-4 pb-4 px-4">
 
       <!-- HEADER -->
       <div class="card-header bg-white d-flex justify-content-between align-items-center">

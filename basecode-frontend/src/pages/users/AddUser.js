@@ -7,7 +7,7 @@ export default async function AddUser() {
   const container = document.createElement("div");
 
   container.innerHTML = `
-    <div class="container-fluid card py-4">
+    <div class="container-fluid card py-4 profile-card pt-4 pb-4 px-4">
 
             <!-- TITLE -->
       <div class="card-header bg-white d-flex justify-content-between align-items-center">

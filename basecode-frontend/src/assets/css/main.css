@@ -1,171 +1,19 @@
 /* =========================
-   BASE
+   THEME VARIABLES
 ========================= */
 
-body {
-  background: #efefef;
-  transition: background .3s, color .3s;
-  font-family: system-ui, -apple-system, sans-serif;
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #e0e0e0;
+  --accent-color: #d6d6d6;
+  --text-color: #060606;
+
+  --body-bg: #efefef;
+  --card-bg: #ffffff;
+  --sidebar-text: #ffffff;
+  --navbar-text: #ffffff;
 }
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-    background: #efefef;
-}
-
-/* =========================
-   SIDEBAR
-========================= */
-
-.sidebar {
-  width: 250px;
-  background: #173b63;
-  color: white;
-  transition: width .3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar.collapsed {
-  width: 70px;
-}
-
-/* Header */
-.sidebar-header {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sidebar-toggle {
-  border: none;
-  background: white;
-  border-radius: 6px;
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-/* Navigation label */
-.navigation-label {
-  padding: 10px 20px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #9fb3c8;
-}
-
-/* Menu */
-.menu-group {
-  margin-top: 10px;
-}
-
-.menu-title {
-  padding: 10px 20px 5px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #9fb3c8;
-  text-transform: uppercase;
-}
-
-.sidebar-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.sidebar-menu li {
-  margin: 3px 10px;
-}
-
-.sidebar-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-  transition: background .2s;
-}
-
-.sidebar-link:hover {
-  background: rgba(255,255,255,0.12);
-}
-
-.sidebar-link.active {
-  background: rgba(255,255,255,0.18);
-}
-
-.sidebar-link i {
-  font-size: 16px;
-  min-width: 20px;
-}
-
-/* collapsed sidebar behavior */
-.sidebar.collapsed .menu-title,
-.sidebar.collapsed .navigation-label,
-.sidebar.collapsed .logo h5,
-.sidebar.collapsed .sidebar-link span {
-  display: none;
-}
-
-/* center icons when collapsed */
-.sidebar.collapsed .sidebar-link {
-  justify-content: center;
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-.top-navbar {
-  background: #173b63;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 15px 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* =========================
-   MAIN CONTENT
-========================= */
-
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.page-content {
-  padding: 25px;
-}
-
-/* =========================
-   BREADCRUMB
-========================= */
-
-.breadcrumb-wrapper {
-  /* background: white; */
-  border-bottom: 1px solid #eee;
-  padding: 12px 25px;
-}
-
-/* =========================
-   CARDS (DASHBOARD)
-========================= */
-
-.card {
-  border-radius: 10px;
-  border: none;
-}
-
-.dashboard-card {
-  background: rgb(213, 213, 213);
-  padding: 16px;
-  border-radius: 12px;
-}
 
 /* =========================
    DARK MODE
@@ -202,6 +50,184 @@ body {
 
 }
 
+
+body {
+  background: var(--primary-color);
+  color: var(--text-color);
+  transition: all .3s;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--primary-color);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: 250px;
+  background: var(--accent-color);
+  color: var(--text-color);
+  transition: width .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Header */
+.sidebar-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-toggle {
+  border: none;
+  background: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* Navigation label */
+.navigation-label {
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 600;
+    color: var(--text-color);
+  /* color: rgba(255,255,255,.65); */
+}
+
+/* Menu */
+.menu-group {
+  margin-top: 10px;
+}
+
+.menu-title {
+  padding: 10px 20px 5px;
+  font-size: 11px;
+  font-weight: 600;
+  /* color: rgba(255,255,255,.65); */
+    color: var(--text-color);
+  text-transform: uppercase;
+}
+
+.sidebar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 3px 10px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+    color: var(--text-color);
+  /* color: white; */
+  transition: background .2s;
+}
+
+.sidebar-link:hover {
+  background: var(--accent-color);
+}
+
+.sidebar-link.active {
+  background: var(--accent-color);
+}
+
+.sidebar-link i {
+  font-size: 16px;
+  min-width: 20px;
+}
+
+/* collapsed sidebar behavior */
+.sidebar.collapsed .menu-title,
+.sidebar.collapsed .navigation-label,
+.sidebar.collapsed .logo h5,
+.sidebar.collapsed .sidebar-link span {
+  display: none;
+}
+
+/* center icons when collapsed */
+.sidebar.collapsed .sidebar-link {
+  justify-content: center;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.top-navbar {
+  background: var(--accent-color);
+  color: var(--text-color);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.profile-card{
+  background: var(--secondary-color);
+  color: var(--text-color);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  padding: 25px;
+}
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb-wrapper {
+  /* background: white; */
+  color:var(--secondary-color);
+  border-bottom: 1px solid #eee;
+  padding: 12px 25px;
+}
+
+/* =========================
+   CARDS (DASHBOARD)
+========================= */
+
+.card {
+  border-radius: 10px;
+  border: none;
+}
+
+.dashboard-card {
+  background: var(--accent-color);
+  padding: 16px;
+  border-radius: 12px;
+}
+
 /* =========================
    BUTTONS OVERRIDE (optional polish)
 ========================= */
@@ -215,17 +241,14 @@ button:active {
 }
 
 
-
-
-
 .custom-toast {
   position: fixed;
   top: 20px;
   right: 20px;
   padding: 12px 18px;
   border-radius: 8px;
-  color: white;
-  background: #198754;
+    color: var(--text-color);
+  background: var(--secondary-color);
   opacity: 0;
   transform: translateY(-10px);
   transition: 0.3s ease;
@@ -246,7 +269,7 @@ button:active {
   border: 1px solid #d9dee7;
   border-radius: 12px;
   padding: 20px;
-  background: #fff;
+  /* background: var(--accent-color); */
   height: 100%;
 }
 
@@ -257,8 +280,9 @@ button:active {
 }
 
 .config-card .btn {
-  background: #173f6d;
-  border-color: #173f6d;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+      color: var(--text-color);
 }
 
 .config-card .badge {
@@ -273,6 +297,15 @@ button:active {
 
 
 .btn-filter {
-  background: #173f6d;
-  border-color: #173f6d;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
 }
+
+a {
+  color: var(--accent-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+

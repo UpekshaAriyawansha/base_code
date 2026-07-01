@@ -37,15 +37,15 @@ export default function Configuration() {
   const canViewSettings = hasPermission("setting.view");
 
   container.innerHTML = `
-    <div class="container-fluid">
+    <div class="c">
 
-      <div class="card vh-100">
+      <div class="card vh-100 ontainer-fluid profile-card pt-4 pb-4 px-5">
 
         <div class="card-header">
           <strong>Configuration</strong>
         </div>
 
-        <div class="card-body">
+        <div class="card-body bg-white">
 
           <div class="border rounded p-3 bg-light mb-4 text-dark">
             Choose a section below to manage system behavior,
@@ -66,7 +66,7 @@ export default function Configuration() {
                 <p>Review role and user activity insights and audit trends.</p>
 
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary config-btn"
                   data-link="#/insights"
                   ${!canViewSettings ? "disabled style='opacity:0.5;cursor:not-allowed;'" : ""}
                 >
@@ -88,7 +88,7 @@ export default function Configuration() {
                 <p>Manage system-level settings and branding preferences.</p>
 
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary config-btn"
                   data-link="#/settings"
                   ${!canViewSettings ? "disabled style='opacity:0.5;cursor:not-allowed;'" : ""}
                 >
@@ -109,7 +109,7 @@ export default function Configuration() {
 
                 <p>Create roles and manage role permissions across the system.</p>
 
-                <button class="btn btn-primary" data-link="#/roles">
+                <button class="btn btn-primary config-btn" data-link="#/roles">
                   Open Roles
                 </button>
 
@@ -128,7 +128,7 @@ export default function Configuration() {
                 <p>Configure SMTP transport and test outbound emails.</p>
 
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary config-btn"
                   data-link="#/email"
                   ${!canViewSettings ? "disabled style='opacity:0.5;cursor:not-allowed;'" : ""}
                 >

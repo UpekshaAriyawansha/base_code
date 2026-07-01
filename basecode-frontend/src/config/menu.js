@@ -24,6 +24,12 @@
         icon: 'bi-sliders',
         page: 'configuration',
         href: '#/configuration'
+      },
+            {
+        title: 'Profile',
+        icon: 'bi-person-circle',
+        page: 'profile',
+        href: '#/profile'
       }
     ]
   }

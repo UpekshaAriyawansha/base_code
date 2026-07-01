@@ -9,8 +9,8 @@ export default function Breadcrumb(pageName = 'Dashboard') {
         <div class="card-body py-2">
                 <ol class="breadcrumb mb-0">
 
-      <li class="breadcrumb-item">
-        <a href="#/dashboard">Dashboard</a>
+      <li class="breadcrumb-item text-primary">
+        <a class="breadcrumb-item active text-primary text-decoration-none href="#/dashboard">Dashboard</a>
       </li>
 
       <li class="breadcrumb-item active text-primary">

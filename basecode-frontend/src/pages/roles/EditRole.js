@@ -41,7 +41,7 @@ export default async function EditRole() {
   const allPermissions = permRes.data || [];
 
   container.innerHTML = `
-    <div class="container-fluid card py-4">
+    <div class="container-fluid card py-4 profile-card pt-4 pb-4 px-4">
 
       <!-- TITLE -->
 

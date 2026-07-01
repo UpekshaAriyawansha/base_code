@@ -11,7 +11,7 @@ export default function EmailSetup() {
   container.classList.add("page");
 
   container.innerHTML = `
-    <div class="container-fluid">
+    <div class="container-fluid profile-card pt-4 pb-4 px-4">
 
       <div class="card">
         <div class="card-header bg-white text-dark">

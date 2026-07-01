@@ -5,10 +5,10 @@ export default function DashboardPage() {
   container.classList.add("page");
 
   container.innerHTML = `
-    <div class="container-fluid card vh-100">
+    <div class="container-fluid card vh-100 profile-card">
 
       <!-- HEADER -->
-      <div class="card-header">
+      <div class="card-header profile-card">
         <strong>Dashboard</strong>
       </div>
 

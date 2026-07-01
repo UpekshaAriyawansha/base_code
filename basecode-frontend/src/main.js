@@ -4,16 +4,6 @@
 
 // import { router } from './router/router.js';
 
-// import DashboardLayout from './layouts/dashboardLayout.js';
-// import DashboardPage from './pages/dashboard/dashboard.js';
-
-// const app = document.getElementById('app');
-
-// app.appendChild(
-//   DashboardLayout(DashboardPage(), 'Dashboard')
-// );
-
-// // listen to route changes
 // window.addEventListener('hashchange', router);
 // window.addEventListener('load', router);
 
@@ -22,6 +12,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './assets/css/main.css';
 
 import { router } from './router/router.js';
+import { applyTheme } from './services/theme.js';
+
+window.addEventListener('load', async () => {
+  await applyTheme();
+  router();
+});
 
 window.addEventListener('hashchange', router);
-window.addEventListener('load', router);

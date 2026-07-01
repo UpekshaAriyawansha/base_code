@@ -49,7 +49,7 @@ export default async function ViewRole() {
 
   container.innerHTML = `
 
-    <div class="container-fluid">
+    <div class="container-fluid profile-card pt-4 pb-4 px-4">
 
       <div class="card shadow-sm">
 

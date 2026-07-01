@@ -24,6 +24,8 @@ import Insights from "../pages/Insights/Insights.js";
 import Settings from "../pages/Settings/Settings.js";   
 import EmailSetup from "../pages/EmailSetup/EmailSetup.js";   
 
+import Profile from "../pages/Profile/Profile.js";
+
 
 const routes = {
 
@@ -44,37 +46,23 @@ const routes = {
   "/roles": { component: Roles, title: "Roles", layout: true },
   "/roles/add": { component: AddRole, title: "Add Role", layout: true },
   "/roles/edit": { component: EditRole, title: "Edit Role", layout: true },
-  "/roles/view": {
-  component: ViewRole,
-  title: "Role Details",
-  layout: true
+  "/roles/view": { component: ViewRole,  title: "Role Details",  layout: true
 },
 
-  "/insights": {
-    component: Insights,
-    title: "Insights",
-    layout: true
-  },
+  "/insights": {component: Insights,title: "Insights",layout: true },
 
-  "/settings": {
-    component: Settings,
-    title: "Settings",
-    layout: true
-  },
+  "/settings": {component: Settings,title: "Settings", layout: true },
 
-  "/email": {
-    component: EmailSetup,
-    title: "Email Setup",
-    layout: true
-  },
+  "/email": {component: EmailSetup,title: "Email Setup", layout: true },
 
+    "/profile": {component: Profile,title: "Profile",layout: true },
 
   
 };
 
 function getPath() {
 
-  const hash = location.hash || "#/dashboard";
+  const hash = location.hash || "#/login";
   const path = hash.replace("#", "");
 
   const parts = path.split("/");

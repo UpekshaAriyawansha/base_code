@@ -58,7 +58,7 @@ export default function Navbar() {
     nav.innerHTML = `
       <div class="pt-3 pb-3">
 
-        <h6 class="mb-0 text-white">
+        <h6 class="mb-0 ">
           ${
             loggedIn && user?.email
               ? `Welcome, ${user.email}`
@@ -73,7 +73,7 @@ export default function Navbar() {
         ${
           loggedIn
             ? `
-              <div class="text-white small">
+              <div class="small">
                 Exp:
                 <span id="expTime">${getRemainingTime()}</span>
               </div>

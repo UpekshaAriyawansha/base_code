@@ -4,7 +4,7 @@ export default function AuditLogs() {
   const container = document.createElement("div");
 
   container.innerHTML = `
-    <div class="container-fluid card vh-100">
+    <div class="container-fluid card vh-100 profile-card pt-4">
 
       <div class="card-header d-flex justify-content-between align-items-center">
         <strong>Audit Logs</strong>

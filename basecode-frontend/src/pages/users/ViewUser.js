@@ -66,7 +66,7 @@ export default async function ViewUser() {
     console.log("users.delete:", hasDeletePermission);
 
     container.innerHTML = `
-      <div class="card shadow-sm">
+      <div class="card shadow-sm profile-card pt-4 pb-4 px-4">
 
         <!-- HEADER -->
         <div class="card-header bg-white d-flex justify-content-between align-items-center">

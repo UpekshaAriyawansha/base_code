@@ -139,10 +139,10 @@ class SettingRepository
         return true;
     }
 
-
 public function getGeneralSettings(): array
 {
     return [
+
         'branding.app_name' =>
             $this->findByKey('branding.app_name')['setting_value'] ?? '',
 
@@ -154,15 +154,41 @@ public function getGeneralSettings(): array
 
         'branding.logo' =>
             $this->findByKey('branding.logo')['setting_value'] ?? '',
+
+        // Theme colors
+        'theme.primary_color' =>
+            $this->findByKey('theme.primary_color')['setting_value'] ?? '#ffffff',
+
+        'theme.secondary_color' =>
+            $this->findByKey('theme.secondary_color')['setting_value'] ?? '#e0e0e0',
+
+        'theme.accent_color' =>
+            $this->findByKey('theme.accent_color')['setting_value'] ?? '#d6d6d6',
+
+        'theme.text_color' =>
+            $this->findByKey('theme.text_color')['setting_value'] ?? '#060606',
     ];
 }
 
+// public function getGeneralSettings(): array
+// {
+//     return [
+//         'branding.app_name' =>
+//             $this->findByKey('branding.app_name')['setting_value'] ?? '',
 
+//         'app.timezone' =>
+//             $this->findByKey('app.timezone')['setting_value'] ?? 'UTC',
 
-public function saveGeneralSettings(
-    array $data
-): bool {
+//         'branding.mode' =>
+//             $this->findByKey('branding.mode')['setting_value'] ?? 'text',
 
+//         'branding.logo' =>
+//             $this->findByKey('branding.logo')['setting_value'] ?? '',
+//     ];
+// }
+
+public function saveGeneralSettings(array $data): bool
+{
     $this->saveSetting(
         'branding.app_name',
         $data['branding.app_name'] ?? ''
@@ -178,16 +204,66 @@ public function saveGeneralSettings(
         $data['branding.mode'] ?? 'text'
     );
 
-    if (!empty($data['branding.logo'])) {
-
-        $this->saveImage(
+    if (isset($data['branding.logo'])) {
+        $this->saveSetting(
             'branding.logo',
             $data['branding.logo']
         );
     }
 
+    // Theme colors
+    $this->saveSetting(
+        'theme.primary_color',
+        $data['theme.primary_color'] ?? '#ffffff'
+    );
+
+    $this->saveSetting(
+        'theme.secondary_color',
+        $data['theme.secondary_color'] ?? '#cccccc'
+    );
+
+    $this->saveSetting(
+        'theme.accent_color',
+        $data['theme.accent_color'] ?? '#d6d6d6'
+    );
+
+    $this->saveSetting(
+        'theme.text_color',
+        $data['theme.text_color'] ?? '#000000'
+    );
+
     return true;
 }
+
+// public function saveGeneralSettings(
+//     array $data
+// ): bool {
+
+//     $this->saveSetting(
+//         'branding.app_name',
+//         $data['branding.app_name'] ?? ''
+//     );
+
+//     $this->saveSetting(
+//         'app.timezone',
+//         $data['app.timezone'] ?? 'UTC'
+//     );
+
+//     $this->saveSetting(
+//         'branding.mode',
+//         $data['branding.mode'] ?? 'text'
+//     );
+
+//     if (!empty($data['branding.logo'])) {
+
+//         $this->saveImage(
+//             'branding.logo',
+//             $data['branding.logo']
+//         );
+//     }
+
+//     return true;
+// }
 
 
 
